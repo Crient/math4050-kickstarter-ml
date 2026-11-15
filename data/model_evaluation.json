@@ -1,0 +1,110 @@
+{
+  "features": [
+    "funding_goal_usd",
+    "duration_days",
+    "launch_month",
+    "main_category",
+    "country"
+  ],
+  "selected_on_2025": "Decision Tree",
+  "validation_2025": {
+    "Always success": {
+      "accuracy": 0.704699291994087,
+      "failure_precision": 0.0,
+      "failure_recall": 0.0,
+      "failure_f1": 0.0,
+      "confusion_matrix": [
+        [
+          0,
+          7591
+        ],
+        [
+          0,
+          18115
+        ]
+      ]
+    },
+    "Logistic Regression": {
+      "accuracy": 0.7716486423403096,
+      "failure_precision": 0.6835146086585626,
+      "failure_recall": 0.4222105124489527,
+      "failure_f1": 0.5219869706840391,
+      "confusion_matrix": [
+        [
+          3205,
+          4386
+        ],
+        [
+          1484,
+          16631
+        ]
+      ]
+    },
+    "Decision Tree": {
+      "accuracy": 0.7796623356414845,
+      "failure_precision": 0.7102334715252019,
+      "failure_recall": 0.42879725991305495,
+      "failure_f1": 0.5347461803844258,
+      "confusion_matrix": [
+        [
+          3255,
+          4336
+        ],
+        [
+          1328,
+          16787
+        ]
+      ]
+    }
+  },
+  "evaluation_2026": {
+    "Always success": {
+      "accuracy": 0.7629854658089111,
+      "failure_precision": 0.0,
+      "failure_recall": 0.0,
+      "failure_f1": 0.0,
+      "confusion_matrix": [
+        [
+          0,
+          3979
+        ],
+        [
+          0,
+          12809
+        ]
+      ]
+    },
+    "Logistic Regression": {
+      "accuracy": 0.8051584465094115,
+      "failure_precision": 0.6540469973890339,
+      "failure_recall": 0.3777330987685348,
+      "failure_f1": 0.47889119005894537,
+      "confusion_matrix": [
+        [
+          1503,
+          2476
+        ],
+        [
+          795,
+          12014
+        ]
+      ]
+    },
+    "Decision Tree": {
+      "accuracy": 0.8001548725279962,
+      "failure_precision": 0.6318681318681318,
+      "failure_recall": 0.37572254335260113,
+      "failure_f1": 0.47123719464145,
+      "confusion_matrix": [
+        [
+          1495,
+          2484
+        ],
+        [
+          871,
+          11938
+        ]
+      ]
+    }
+  }
+}

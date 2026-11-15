@@ -1,0 +1,489 @@
+{
+  "category": [
+    {
+      "main_category": "Art",
+      "campaigns": 4523,
+      "successful": 3362,
+      "success_rate_pct": 74.3
+    },
+    {
+      "main_category": "Comics",
+      "campaigns": 6004,
+      "successful": 5592,
+      "success_rate_pct": 93.1
+    },
+    {
+      "main_category": "Crafts",
+      "campaigns": 1215,
+      "successful": 588,
+      "success_rate_pct": 48.4
+    },
+    {
+      "main_category": "Dance",
+      "campaigns": 151,
+      "successful": 75,
+      "success_rate_pct": 49.7
+    },
+    {
+      "main_category": "Design",
+      "campaigns": 5617,
+      "successful": 4498,
+      "success_rate_pct": 80.1
+    },
+    {
+      "main_category": "Fashion",
+      "campaigns": 2658,
+      "successful": 1441,
+      "success_rate_pct": 54.2
+    },
+    {
+      "main_category": "Film & Video",
+      "campaigns": 6435,
+      "successful": 3297,
+      "success_rate_pct": 51.2
+    },
+    {
+      "main_category": "Food",
+      "campaigns": 2338,
+      "successful": 693,
+      "success_rate_pct": 29.6
+    },
+    {
+      "main_category": "Games",
+      "campaigns": 14390,
+      "successful": 12152,
+      "success_rate_pct": 84.4
+    },
+    {
+      "main_category": "Journalism",
+      "campaigns": 313,
+      "successful": 104,
+      "success_rate_pct": 33.2
+    },
+    {
+      "main_category": "Music",
+      "campaigns": 3170,
+      "successful": 2142,
+      "success_rate_pct": 67.6
+    },
+    {
+      "main_category": "Photography",
+      "campaigns": 1080,
+      "successful": 749,
+      "success_rate_pct": 69.4
+    },
+    {
+      "main_category": "Publishing",
+      "campaigns": 8256,
+      "successful": 6024,
+      "success_rate_pct": 73.0
+    },
+    {
+      "main_category": "Technology",
+      "campaigns": 6262,
+      "successful": 3521,
+      "success_rate_pct": 56.2
+    },
+    {
+      "main_category": "Theater",
+      "campaigns": 663,
+      "successful": 420,
+      "success_rate_pct": 63.3
+    }
+  ],
+  "country_top10": [
+    {
+      "country": "US",
+      "campaigns": 33948,
+      "successful": 23879,
+      "success_rate_pct": 70.3
+    },
+    {
+      "country": "GB",
+      "campaigns": 7260,
+      "successful": 5409,
+      "success_rate_pct": 74.5
+    },
+    {
+      "country": "CA",
+      "campaigns": 3292,
+      "successful": 2289,
+      "success_rate_pct": 69.5
+    },
+    {
+      "country": "HK",
+      "campaigns": 2773,
+      "successful": 2512,
+      "success_rate_pct": 90.6
+    },
+    {
+      "country": "DE",
+      "campaigns": 1924,
+      "successful": 1125,
+      "success_rate_pct": 58.5
+    },
+    {
+      "country": "ES",
+      "campaigns": 1884,
+      "successful": 1327,
+      "success_rate_pct": 70.4
+    },
+    {
+      "country": "AU",
+      "campaigns": 1758,
+      "successful": 1220,
+      "success_rate_pct": 69.4
+    },
+    {
+      "country": "IT",
+      "campaigns": 1679,
+      "successful": 1006,
+      "success_rate_pct": 59.9
+    },
+    {
+      "country": "FR",
+      "campaigns": 1557,
+      "successful": 1086,
+      "success_rate_pct": 69.7
+    },
+    {
+      "country": "MX",
+      "campaigns": 1064,
+      "successful": 608,
+      "success_rate_pct": 57.1
+    }
+  ],
+  "goal": [
+    {
+      "goal_band": "Under $1,000",
+      "campaigns": 17185,
+      "successful": 15345,
+      "success_rate_pct": 89.3
+    },
+    {
+      "goal_band": "$1,000\u2013<$5,000",
+      "campaigns": 20141,
+      "successful": 15495,
+      "success_rate_pct": 76.9
+    },
+    {
+      "goal_band": "$5,000\u2013<$10,000",
+      "campaigns": 9812,
+      "successful": 6396,
+      "success_rate_pct": 65.2
+    },
+    {
+      "goal_band": "$10,000\u2013<$25,000",
+      "campaigns": 9359,
+      "successful": 5201,
+      "success_rate_pct": 55.6
+    },
+    {
+      "goal_band": "$25,000\u2013<$50,000",
+      "campaigns": 3762,
+      "successful": 1440,
+      "success_rate_pct": 38.3
+    },
+    {
+      "goal_band": "$50,000+",
+      "campaigns": 2816,
+      "successful": 781,
+      "success_rate_pct": 27.7
+    }
+  ],
+  "duration": [
+    {
+      "duration_band": "Up to 14 days",
+      "campaigns": 4733,
+      "successful": 4220,
+      "success_rate_pct": 89.2
+    },
+    {
+      "duration_band": ">14\u201330 days",
+      "campaigns": 36799,
+      "successful": 27833,
+      "success_rate_pct": 75.6
+    },
+    {
+      "duration_band": ">30\u201345 days",
+      "campaigns": 12677,
+      "successful": 9151,
+      "success_rate_pct": 72.2
+    },
+    {
+      "duration_band": ">45\u201360 days",
+      "campaigns": 8104,
+      "successful": 3195,
+      "success_rate_pct": 39.4
+    },
+    {
+      "duration_band": ">60 days",
+      "campaigns": 762,
+      "successful": 259,
+      "success_rate_pct": 34.0
+    }
+  ],
+  "duration_comparison": [
+    {
+      "cohort": "All funding goals",
+      "duration": "Up to 14 days",
+      "campaigns": 4733,
+      "successful": 4220,
+      "success_rate_pct": 89.2
+    },
+    {
+      "cohort": "All funding goals",
+      "duration": ">30\u201345 days",
+      "campaigns": 12677,
+      "successful": 9151,
+      "success_rate_pct": 72.2
+    },
+    {
+      "cohort": "$10,000\u2013<$25,000 goals",
+      "duration": "Up to 14 days",
+      "campaigns": 152,
+      "successful": 94,
+      "success_rate_pct": 61.8
+    },
+    {
+      "cohort": "$10,000\u2013<$25,000 goals",
+      "duration": ">30\u201345 days",
+      "campaigns": 2416,
+      "successful": 1595,
+      "success_rate_pct": 66.0
+    }
+  ],
+  "launch_month_year": [
+    {
+      "launch_year": 2024,
+      "launch_month": 1,
+      "campaigns": 1500,
+      "successful": 981,
+      "success_rate_pct": 65.4
+    },
+    {
+      "launch_year": 2024,
+      "launch_month": 2,
+      "campaigns": 1608,
+      "successful": 1117,
+      "success_rate_pct": 69.5
+    },
+    {
+      "launch_year": 2024,
+      "launch_month": 3,
+      "campaigns": 1687,
+      "successful": 1137,
+      "success_rate_pct": 67.4
+    },
+    {
+      "launch_year": 2024,
+      "launch_month": 4,
+      "campaigns": 1709,
+      "successful": 1140,
+      "success_rate_pct": 66.7
+    },
+    {
+      "launch_year": 2024,
+      "launch_month": 5,
+      "campaigns": 1780,
+      "successful": 1178,
+      "success_rate_pct": 66.2
+    },
+    {
+      "launch_year": 2024,
+      "launch_month": 6,
+      "campaigns": 1619,
+      "successful": 1056,
+      "success_rate_pct": 65.2
+    },
+    {
+      "launch_year": 2024,
+      "launch_month": 7,
+      "campaigns": 1698,
+      "successful": 1124,
+      "success_rate_pct": 66.2
+    },
+    {
+      "launch_year": 2024,
+      "launch_month": 8,
+      "campaigns": 1597,
+      "successful": 1044,
+      "success_rate_pct": 65.4
+    },
+    {
+      "launch_year": 2024,
+      "launch_month": 9,
+      "campaigns": 1954,
+      "successful": 1344,
+      "success_rate_pct": 68.8
+    },
+    {
+      "launch_year": 2024,
+      "launch_month": 10,
+      "campaigns": 2285,
+      "successful": 1629,
+      "success_rate_pct": 71.3
+    },
+    {
+      "launch_year": 2024,
+      "launch_month": 11,
+      "campaigns": 1878,
+      "successful": 1217,
+      "success_rate_pct": 64.8
+    },
+    {
+      "launch_year": 2024,
+      "launch_month": 12,
+      "campaigns": 1266,
+      "successful": 767,
+      "success_rate_pct": 60.6
+    },
+    {
+      "launch_year": 2025,
+      "launch_month": 1,
+      "campaigns": 1920,
+      "successful": 1282,
+      "success_rate_pct": 66.8
+    },
+    {
+      "launch_year": 2025,
+      "launch_month": 2,
+      "campaigns": 2025,
+      "successful": 1423,
+      "success_rate_pct": 70.3
+    },
+    {
+      "launch_year": 2025,
+      "launch_month": 3,
+      "campaigns": 2029,
+      "successful": 1449,
+      "success_rate_pct": 71.4
+    },
+    {
+      "launch_year": 2025,
+      "launch_month": 4,
+      "campaigns": 2068,
+      "successful": 1445,
+      "success_rate_pct": 69.9
+    },
+    {
+      "launch_year": 2025,
+      "launch_month": 5,
+      "campaigns": 2203,
+      "successful": 1536,
+      "success_rate_pct": 69.7
+    },
+    {
+      "launch_year": 2025,
+      "launch_month": 6,
+      "campaigns": 2322,
+      "successful": 1632,
+      "success_rate_pct": 70.3
+    },
+    {
+      "launch_year": 2025,
+      "launch_month": 7,
+      "campaigns": 2223,
+      "successful": 1543,
+      "success_rate_pct": 69.4
+    },
+    {
+      "launch_year": 2025,
+      "launch_month": 8,
+      "campaigns": 2054,
+      "successful": 1471,
+      "success_rate_pct": 71.6
+    },
+    {
+      "launch_year": 2025,
+      "launch_month": 9,
+      "campaigns": 2437,
+      "successful": 1780,
+      "success_rate_pct": 73.0
+    },
+    {
+      "launch_year": 2025,
+      "launch_month": 10,
+      "campaigns": 2785,
+      "successful": 2078,
+      "success_rate_pct": 74.6
+    },
+    {
+      "launch_year": 2025,
+      "launch_month": 11,
+      "campaigns": 2196,
+      "successful": 1555,
+      "success_rate_pct": 70.8
+    },
+    {
+      "launch_year": 2025,
+      "launch_month": 12,
+      "campaigns": 1444,
+      "successful": 921,
+      "success_rate_pct": 63.8
+    },
+    {
+      "launch_year": 2026,
+      "launch_month": 1,
+      "campaigns": 2073,
+      "successful": 1484,
+      "success_rate_pct": 71.6
+    },
+    {
+      "launch_year": 2026,
+      "launch_month": 2,
+      "campaigns": 2222,
+      "successful": 1722,
+      "success_rate_pct": 77.5
+    },
+    {
+      "launch_year": 2026,
+      "launch_month": 3,
+      "campaigns": 2552,
+      "successful": 1883,
+      "success_rate_pct": 73.8
+    },
+    {
+      "launch_year": 2026,
+      "launch_month": 4,
+      "campaigns": 2246,
+      "successful": 1655,
+      "success_rate_pct": 73.7
+    },
+    {
+      "launch_year": 2026,
+      "launch_month": 5,
+      "campaigns": 2095,
+      "successful": 1570,
+      "success_rate_pct": 74.9
+    },
+    {
+      "launch_year": 2026,
+      "launch_month": 6,
+      "campaigns": 2057,
+      "successful": 1557,
+      "success_rate_pct": 75.7
+    },
+    {
+      "launch_year": 2026,
+      "launch_month": 7,
+      "campaigns": 1908,
+      "successful": 1496,
+      "success_rate_pct": 78.4
+    },
+    {
+      "launch_year": 2026,
+      "launch_month": 8,
+      "campaigns": 1297,
+      "successful": 1121,
+      "success_rate_pct": 86.4
+    },
+    {
+      "launch_year": 2026,
+      "launch_month": 9,
+      "campaigns": 338,
+      "successful": 321,
+      "success_rate_pct": 95.0
+    }
+  ]
+}

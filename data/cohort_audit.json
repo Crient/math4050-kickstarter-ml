@@ -1,0 +1,49 @@
+{
+  "cutoff_exclusive_utc": "2026-10-02T00:00:00+00:00",
+  "raw_observations": 2258203,
+  "csv_parts": 721,
+  "snapshot_rows": {
+    "2026-01-12": 266279,
+    "2026-02-12": 267673,
+    "2026-03-12": 268539,
+    "2026-04-13": 269828,
+    "2026-05-12": 270510,
+    "2026-06-11": 272518,
+    "2026-07-24": 112499,
+    "2026-08-12": 244266,
+    "2026-09-10": 194160,
+    "2026-10-12": 91931
+  },
+  "unique_campaign_ids": 236203,
+  "ids_in_multiple_snapshots": 226716,
+  "extra_rows_within_snapshot": 473545,
+  "within_snapshot_conflicting_payload_groups": 162,
+  "within_snapshot_conflicting_state_groups": 32,
+  "cohort_rows": 63075,
+  "launch_year_counts": {
+    "2024": 20581,
+    "2025": 25706,
+    "2026": 16788
+  },
+  "outcome_counts": {
+    "1": 44658,
+    "0": 18417
+  },
+  "calendar_boundaries": [
+    {
+      "launch_year": 2024,
+      "campaigns": 20581,
+      "deadline_on_or_after_next_jan1": 1399,
+      "outcome_on_or_after_next_jan1": 1399,
+      "latest_recorded_outcome_utc": "2025-03-01T22:43:44+00:00"
+    },
+    {
+      "launch_year": 2025,
+      "campaigns": 25706,
+      "deadline_on_or_after_next_jan1": 1506,
+      "outcome_on_or_after_next_jan1": 1506,
+      "latest_recorded_outcome_utc": "2026-03-01T13:39:45+00:00"
+    }
+  ],
+  "cleaned_csv_sha256": "b6c852abfce2d0dced78816e348edc59b3b919485f0401e123d7764a77fb3e2e"
+}

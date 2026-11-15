@@ -1,0 +1,62 @@
+{
+  "2026-01": {
+    "filename": "kickstarter_2026_01_12.zip",
+    "url": "https://s3.amazonaws.com/weruns/forfun/Kickstarter/Kickstarter_2026-01-12T09_37_51_016Z.zip",
+    "bytes": 366117044,
+    "csv_parts": 84
+  },
+  "2026-02": {
+    "filename": "kickstarter_2026_02_12.zip",
+    "url": "https://s3.amazonaws.com/weruns/forfun/Kickstarter/Kickstarter_2026-02-12T03_20_22_018Z.zip",
+    "bytes": 367916874,
+    "csv_parts": 85
+  },
+  "2026-03": {
+    "filename": "kickstarter_2026_03_12.zip",
+    "url": "https://s3.amazonaws.com/weruns/forfun/Kickstarter/Kickstarter_2026-03-12T03_20_26_556Z.zip",
+    "bytes": 369598381,
+    "csv_parts": 85
+  },
+  "2026-04": {
+    "filename": "kickstarter_2026_04_13.zip",
+    "url": "https://s3.amazonaws.com/weruns/forfun/Kickstarter/Kickstarter_2026-04-13T11_08_31_431Z.zip",
+    "bytes": 371387885,
+    "csv_parts": 86
+  },
+  "2026-05": {
+    "filename": "kickstarter_2026_05_12.zip",
+    "url": "https://s3.amazonaws.com/weruns/forfun/Kickstarter/Kickstarter_2026-05-12T07_26_57_886Z.zip",
+    "bytes": 371972838,
+    "csv_parts": 86
+  },
+  "2026-06": {
+    "filename": "kickstarter_2026_06_11.zip",
+    "url": "https://s3.amazonaws.com/weruns/forfun/Kickstarter/Kickstarter_2026-06-11T03_20_11_324Z.zip",
+    "bytes": 374929166,
+    "csv_parts": 86
+  },
+  "2026-07": {
+    "filename": "kickstarter_2026_07_24.zip",
+    "url": "https://s3.amazonaws.com/weruns/forfun/Kickstarter/Kickstarter_2026-07-24T08_26_14_228Z.zip",
+    "bytes": 149053830,
+    "csv_parts": 37
+  },
+  "2026-08": {
+    "filename": "kickstarter_2026_08_12.zip",
+    "url": "https://s3.amazonaws.com/weruns/forfun/Kickstarter/Kickstarter_2026-08-12T08_12_02_805Z.zip",
+    "bytes": 337318629,
+    "csv_parts": 79
+  },
+  "2026-09": {
+    "filename": "kickstarter_2026_09_10.zip",
+    "url": "https://s3.amazonaws.com/weruns/forfun/Kickstarter/Kickstarter_2026-09-10T03_20_48_478Z.zip",
+    "bytes": 268088678,
+    "csv_parts": 63
+  },
+  "2026-10": {
+    "filename": "kickstarter_2026_10_12.zip",
+    "url": "https://s3.amazonaws.com/weruns/forfun/Kickstarter/Kickstarter_2026-10-12T07_08_07_724Z.zip",
+    "bytes": 121803899,
+    "csv_parts": 30
+  }
+}

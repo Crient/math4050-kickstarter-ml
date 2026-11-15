@@ -1,0 +1,8 @@
+# Tested together on Python 3.13.0. Install in a fresh project-local venv.
+numpy==2.5.4
+pandas==2.3.3
+matplotlib==3.11.2
+scikit-learn==1.9.1
+ipykernel==7.4.0
+nbformat==5.11.1
+nbclient==0.11.0

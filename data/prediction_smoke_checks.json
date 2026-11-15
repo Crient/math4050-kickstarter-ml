@@ -1,0 +1,25 @@
+[
+  {
+    "case": "Default",
+    "prediction": "Reaches funding goal",
+    "cautions": []
+  },
+  {
+    "case": "Modified",
+    "prediction": "Misses funding goal",
+    "cautions": []
+  },
+  {
+    "case": "Invalid negative duration",
+    "rejected": true,
+    "message": "duration_days must be a finite number greater than zero (without $ or commas)."
+  },
+  {
+    "case": "Unseen category/country",
+    "prediction": "Reaches funding goal",
+    "cautions": [
+      "main_category='Unseen demo category' was not seen in training; its one-hot block is all zeros. Interpret cautiously.",
+      "country='ZZ' was not seen in training; its one-hot block is all zeros. Interpret cautiously."
+    ]
+  }
+]

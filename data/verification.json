@@ -1,0 +1,28 @@
+{
+  "cohort_unchanged": true,
+  "raw_rebuild_matches_baseline": true,
+  "notebooks": {
+    "01_data_prep.ipynb": {
+      "executed_code_cells": 12,
+      "inline_figures": 0,
+      "saved_errors": 0
+    },
+    "02_analysis_and_prediction.ipynb": {
+      "executed_code_cells": 13,
+      "inline_figures": 6,
+      "saved_errors": 0
+    }
+  },
+  "figure_count": 6,
+  "metrics_match_prior_review": true,
+  "prediction_cases_passed": 4,
+  "sha256": {
+    "data/kickstarter_cleaned_2024_2026.csv": "b6c852abfce2d0dced78816e348edc59b3b919485f0401e123d7764a77fb3e2e",
+    "visualizations/01_success_by_category.png": "baefebf1b6b8ff07034eab95ced27b5b159c0a876d705ec305b6abda3243b23f",
+    "visualizations/02_success_by_country.png": "86c081d4e6a06310bf313ee1d96eb5327594e307ebb40ae83b3742535b6182ed",
+    "visualizations/03_success_by_funding_goal.png": "90db3c95baff820ad319c4f49e047f288a7c35f39d4b4dd48ed516489ad8328e",
+    "visualizations/04_success_by_duration.png": "1fac90601d0f604269ebe01d6e4ef1756b25bd3336026b8dd8ab3e419d4248bf",
+    "visualizations/05_duration_comparison_by_goal.png": "9b7462e2939a8bde36ae97b4a49f79441090fdb21b481e8e4cb9b51253b69a2d",
+    "visualizations/06_success_by_launch_month_and_year.png": "2210fd3bb8325f959739b027f92edf1bcb76ce4a3abd44a30cb5a0c4874d889d"
+  }
+}
