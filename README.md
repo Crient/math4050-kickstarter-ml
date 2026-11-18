@@ -1,258 +1,135 @@
-# Kickstarter campaign outcomes: a founder’s launch-plan benchmark
+# MATH4050 Kickstarter machine learning final project
 
-DATA3125 individual project by Gechleng Lim. Can past Kickstarter campaigns
-help a founder benchmark a new launch plan and anticipate whether it will
-reach its funding goal?
+Independent MATH4050 extension by Gechleng Lim, starting from the finished
+[DATA3125 source commit](https://github.com/Crient/data3125-kickstarter-analysis/tree/21a6242b3ec3a5c78f3d9d3de5af00189edc7c1a).
+The repository retains that Git history and the complete committed DATA3125
+foundation. The DATA3125 repository remains the separate course submission.
 
-The analysis uses **63,075 unique campaigns launched in 2024–2026**, observed
-in ten [Web Robots Kickstarter snapshots](https://webrobots.io/kickstarter-datasets/)
-from January–October 2026. It combines descriptive comparisons with a small,
-reproducible five-input prediction demo inside a notebook.
+**Status: setup complete; all MATH4050 model experiments are pending.**
+Open [code/03_math4050_model_comparison.ipynb](code/03_math4050_model_comparison.ipynb)
+to begin. Its only executable cells locate the project and load/validate the
+committed CSV. No models, searches, PCA, or new model results run during setup.
 
-## Research questions
+## Learning workflow
 
-1. How do success rates differ by category and country?
-2. How are funding goal and duration associated with success?
-3. How do success rates vary by launch month and year?
-4. Can goal, duration, launch month, main category, and country predict funding success?
+Work through one model at a time with ChatGPT: explain the method, copy a small
+code block, run it, examine the output/errors, and discuss what happened.
+Then vary complexity and interpret training versus validation performance.
+Automated cleanup and finalization come after the experiments are understood.
 
-## Findings
+The comparison notebook has prompts for the majority baseline, Logistic
+Regression, Decision Tree, Random Forest, KNN, SVM, PCA with a downstream
+classifier, bias–variance, final comparison/error analysis, and limitations.
+All model sections remain Markdown prompts for subsequent learning sessions.
 
-- Category and market matter for choosing comparable campaigns: Comics has
-  **93.1%** observed success versus **84.4%** for Games; the US has **70.3%**
-  across 33,948 campaigns, while Hong Kong has **90.6%** across 2,773.
-- Campaigns seeking under $1,000 succeed **89.3%** of the time, versus **27.7%**
-  for goals of $50,000 or more. These are observed associations, not causal effects.
-- The duration ranking reverses after restricting the funding range:
+## Dataset and evaluation design
 
-  | Cohort | Up to 14 days | Over 30 through 45 days |
-  | --- | ---: | ---: |
-  | All funding goals | 89.2% (n=4,733) | 72.2% (n=12,677) |
-  | $10,000–<$25,000 goals | 61.8% (n=152) | 66.0% (n=2,416) |
+The committed CSV contains **63,075 unique campaigns**: **20,581** launched in
+2024, **25,706** in 2025, and **16,788** in 2026. Its SHA-256 is
+`b6c852abfce2d0dced78816e348edc59b3b919485f0401e123d7764a77fb3e2e`.
+The notebook checks the hash, schema, unique IDs, year counts, dates and feature
+validity using the inherited validation function. Setup does not rebuild data.
 
-  The narrow short-duration group is much smaller. This does **not** establish
-  that extending a campaign improves its odds.
-- September 2026's **95.0%** rate covers only **338 eligible campaigns**.
-  The October 1 deadline/outcome cutoff excludes later-finishing campaigns,
-  so this is not the full month's success rate.
+Use exactly five predictors: `funding_goal_usd`, `duration_days`, `launch_month`,
+`main_category`, and `country`. Success is 1; failure is 0. ID, launch year,
+timestamps and outcomes are never predictors; backers and final pledges are
+excluded. Launch year determines the split; success is the target.
 
-![Observed duration comparison across funding ranges](visualizations/05_duration_comparison_by_goal.png)
+Train on 2024 and tune/select using 2025 validation, keeping all learned
+preprocessing inside the training pipeline. This includes scaling, category
+encoding and PCA; fit each inside its training fold when using cross-validation.
+After freezing models/parameters, refit on 2024–2025 and compare on 2026.
+**2026 is a reused evaluation benchmark:** its results were already inspected
+in DATA3125. It cannot support a claim of fresh, untouched test performance,
+and it must not guide tuning or model selection.
 
-### Final model comparison
+This is a **launch-year split**. Outcomes can cross calendar boundaries, and
+all snapshots were collected in 2026; this does not simulate knowledge available
+on January 1. Scraped goal/category fields are not proven unchanged since launch.
 
-Fit on 2024 and compare on **2025 validation**. The Decision Tree's **78.0%**
-validation accuracy exceeds Logistic Regression's **77.2%**, so it is selected
-for the demo. Refit the fixed pipelines on 2024–2025 and evaluate on **2026**:
+The cohort comes from ten uneven Web Robots snapshots from January–October
+2026. Within a campaign/snapshot, retain the first observation in sorted
+CSV-part order, then retain the latest available snapshot for the campaign.
+Conflicting duplicate values remain a limitation of that deterministic rule.
+Keep successful/failed 2024–2026 launches with deadline before
+**2026-10-02 00:00 UTC** and state-change timestamp at/after launch and before
+that cutoff: eligibility through the end of October 1, 2026 UTC. Later-finishing,
+live, canceled and suspended campaigns are excluded. This is an observed,
+nonrandom sample with cutoff selection, especially near the latest launch dates.
 
-| Model | Accuracy (all) | Precision (failure 0) | Recall (failure 0) | F1 (failure 0) |
-| --- | ---: | ---: | ---: | ---: |
-| Always predict success | 76.3% | 0.0%* | 0.0% | 0.0% |
-| Logistic Regression | 80.5% | 65.4% | 37.8% | 47.9% |
-| Decision Tree (depth 5) | 80.0% | 63.2% | 37.6% | 47.1% |
+Evaluate accuracy alongside **failure-class (0) precision, recall and F1**.
+Use actual rows/predicted columns and label order [0, 1] in confusion matrices.
+Explain undefined baseline precision and any `zero_division=0` convention.
+Unknown categories/countries need explicit handling and cautions: inherited
+one-hot encoding ignores unseen values, producing an all-zero block for that
+field, which does not identify a comparable known category. Results describe
+observational associations, with no causal or deployment-performance claims.
 
-*The baseline never predicts failure; precision is defined as 0 using
-`zero_division=0`. Failure is **class 0**, success is **class 1**. The analysis notebook's
-model tables are generated from code, and the analysis includes confusion
-matrices with **actual rows / predicted columns**, class order **[0, 1]**.
-Logistic Regression is slightly stronger in the final evaluation; model
-selection remains tied to 2025, without tuning on 2026. Both models miss most
-failures, limiting the reassurance of a predicted success.
+## Local setup and execution
 
-## Dataset and methodology
-
-| Launch year | Campaigns | Successful | Failed |
-| --- | ---: | ---: | ---: |
-| 2024 | 20,581 | 13,734 | 6,847 |
-| 2025 | 25,706 | 18,115 | 7,591 |
-| 2026 | 16,788 | 12,809 | 3,979 |
-| Total | **63,075** | **44,658** | **18,417** |
-
-Read every CSV part from all ten original ZIPs, attach its snapshot date, and
-reconcile **2,258,203 observations across 721 CSV parts** before filtering.
-Within each campaign/snapshot, retain the first row in sorted CSV-part order;
-then retain the campaign's latest available snapshot. The prep notebook finds **162 conflicting retained-field groups**, including
-**32 with differing states**, within campaign/snapshot pairs; this deterministic tie-breaker does not
-prove which conflicting observation is correct.
-
-Keep 2024–2026 launches with state `successful` or `failed`, a deadline before
-**2026-10-02 00:00 UTC**, and a state-change timestamp at or after launch and
-before that cutoff. That means outcomes and deadlines through the end of
-**October 1, 2026 UTC**. Keep canceled, suspended, and live campaigns outside
-the binary target. Convert goal with `static_usd_rate`, retain fractional-day
-duration, use UTC launch month, extract the JSON parent category (or category
-name), and normalize country codes.
-
-This is a **launch-year split**, not a simulated January 1 deployment.
-**1,506 campaigns launched in 2025 have deadlines in 2026 or later.** The prep
-notebook also audits actual state-change timestamps across year boundaries;
-**1,506** such 2025 outcomes and **1,399** 2024 outcomes occur at or after the
-following January 1; counts are saved in [data/cohort_audit.json](data/cohort_audit.json). Label dates
-alone do not prove a record was observed by an earlier date: all snapshots
-were collected in 2026. A stricter as-of-date study would need availability
-cutoffs for both labels and features. The predictors exclude outcomes,
-backers, and final pledges, but scraped goal/category values are not proven
-unchanged since launch.
-
-Web Robots scrapes are an uneven observed cohort, not a random sample of all
-Kickstarter launches. Raw snapshot coverage varies; eligibility selects
-finished outcomes near the cutoff; the binary target omits other states.
-Use rates as benchmarks, not guarantees or causal recommendations. Raw data
-attribution remains with Web Robots and the underlying Kickstarter records;
-`sources.json` records the exact archive URLs and integrity metadata.
-
-## Repository layout
-
-```text
-README.md
-AGENTS.md
-requirements.txt
-sources.json
-code/
-  01_data_prep.ipynb
-  02_analysis_and_prediction.ipynb
-  kickstarter.py                 # validation, five-input models, scoring
-  run_notebook.py                # execute using the active Python environment
-  verify_project.py              # verify saved outputs and report artifacts
-  scripts/download_snapshots.py
-  tests/test_project.py
-data/
-  kickstarter_cleaned_2024_2026.csv
-  cohort_audit.json
-  analysis_summary.json
-  model_evaluation.json
-  prediction_smoke_checks.json
-  verification.json
-visualizations/                   # six exported report figures
-reports/.gitkeep                  # Word/PDF report is the next phase
-```
-
-The four submission folders are `code`, `data`, `visualizations`, and `reports`.
-Original ZIPs remain in ignored `raw_snapshots/` beside these folders. Virtual
-environments, notebook checkpoints, editor settings, caches, and original
-local backups under `.cache/pre-finalization/` are excluded from Git.
-
-## Set up a fresh checkout
-
-Tested with **Python 3.13.0 on macOS (Apple silicon)**. Use Python 3.13 and the
-pinned direct dependencies in `requirements.txt` for the verified environment.
-No API key or paid service is needed.
+Use Python 3.13 and the existing pinned requirements:
 
 ```bash
-git clone https://github.com/Crient/data3125-kickstarter-analysis.git
-cd data3125-kickstarter-analysis
+git clone https://github.com/Crient/math4050-kickstarter-ml.git kickstarter-math4050-final-project
+cd kickstarter-math4050-final-project
 python3.13 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
+python -m pip check
+python code/run_notebook.py comparison
 ```
 
-### Quick path: run the analysis from the committed CSV
+Alternatively, open the comparison notebook and select this folder's `.venv`
+as the Python/Jupyter kernel, then Run All. Paths support starting in the root
+or `code/`. The runner uses the active environment with a temporary kernelspec.
+No API key or raw archives are needed for the comparison setup.
 
-```bash
-python code/run_notebook.py analysis
-python -m unittest discover -s code/tests -v
-python code/verify_project.py
+## Folder structure
+
+```text
+AGENTS.md                          # MATH4050 scope and honest evaluation rules
+README.md
+requirements.txt                   # inherited pinned dependencies
+sources.json                       # original archive provenance
+docs/DATA3125_README.md             # unchanged source README and methodology
+code/
+  01_data_prep.ipynb                # inherited DATA3125 foundation
+  02_analysis_and_prediction.ipynb  # inherited DATA3125 results/demo
+  03_math4050_model_comparison.ipynb # start learning here; experiments pending
+  kickstarter.py                   # inherited helpers; loading performs no fit
+  run_notebook.py                   # comparison, analysis, prep
+  verify_project.py                # inherited DATA3125 artifact checks only
+  scripts/download_snapshots.py
+  tests/test_project.py             # inherited DATA3125 regression checks
+data/
+  kickstarter_cleaned_2024_2026.csv  # verified committed cohort
+  *.json                           # inherited DATA3125 audits/results
+visualizations/                    # six inherited DATA3125 reference figures
+reports/.gitkeep                   # reserved for later report writing
 ```
 
-The runner executes the notebook top to bottom with the current environment's
-Python, project root as working directory, and a temporary kernelspec. It
-saves readable notebook outputs, six PNGs, analysis tables, metrics, and demo
-smoke checks. It does not require the raw archives. `verify_project.py` checks
-both committed executed notebooks, the CSV, all six figures, and the saved
-raw-rebuild audit; it does not itself reread raw data.
+Future MATH4050 figures/results may use additional files or subfolders without
+overwriting the DATA3125 foundation. `.venv/`, caches, and `raw_snapshots/` stay
+ignored. Git does not contain the original ZIPs; the ten local DATA3125 archives
+remain untouched in the original workspace. Their URLs/integrity metadata are
+preserved in `sources.json`. No archive download/copy is needed in this pass.
 
-Alternatively, open `code/02_analysis_and_prediction.ipynb` in VS Code, select
-this project's `.venv` Python/Jupyter kernel, and **Run All**. Notebook paths
-work when launched from the project root or `code/`.
+## DATA3125 reference results
 
-### Rebuild the cleaned CSV from the original archives
+The existing executed notebooks, six figures, and JSON results are inherited
+**DATA3125 reference results**, not MATH4050 experiments. In that work, 2025
+validation selected the depth-5 Decision Tree for its in-notebook demo. The
+2026 reference accuracies were 76.3% for always-success, 80.5% for Logistic
+Regression, and 80.0% for the tree. The tree's failure recall was only 37.6%.
+These already-inspected results explain why 2026 is a reused benchmark here.
 
-This separate path needs approximately **3.1 GB of compressed raw ZIPs** and
-more RAM/time than the analysis-only path. Keep the archives intact.
+See [the preserved DATA3125 README](docs/DATA3125_README.md) for original
+findings, raw-rebuild methodology and verification history. Its relative file
+links and commands refer to paths from the repository root. That document
+describes the source project; its final-evaluation language and verification
+history do not establish new MATH4050 results. Do not run inherited `analysis`
+or `prep` merely to execute the new comparison scaffold.
 
-```bash
-python code/scripts/download_snapshots.py all
-python code/run_notebook.py prep
-python code/run_notebook.py analysis
-python code/verify_project.py
-```
-
-The downloader validates byte sizes and CSV part counts, reusing existing
-valid ZIPs. Run `python code/scripts/download_snapshots.py 2026-01` for January
-only. The prep notebook reads all ten and compares the rebuilt export to any
-existing CSV **by campaign ID, outcome, timestamps, and all five model
-features** before replacing it; mismatches stop execution. Floating-point
-round-trip differences are checked with a tight tolerance. The local baseline
-and original notebook are backed up in ignored `.cache/pre-finalization/`.
-
-## Try a prediction
-
-Run the analysis notebook once. Find **“Try a prediction · edit one row”** and
-edit only `planned_campaign` in its cell:
-
-```python
-planned_campaign = {
-    "funding_goal_usd": 12000,
-    "duration_days": 30,
-    "launch_month": 3,
-    "main_category": "Games",
-    "country": "US",
-}
-```
-
-Rerun that cell. It reuses the **already-fitted Decision Tree pipeline**; no
-retraining or download occurs. The input row appears beside a clear
-**Reaches funding goal** or **Misses funding goal** result. The default predicts
-success; changing the goal to 1,000,000 and duration to 60 predicts failure.
-
-Enter a positive finite numeric USD goal/duration, integer month 1–12, category
-name, and uppercase two-letter country code. Use plain numbers without dollar
-signs or commas. Invalid values show a correction message. The notebook lists
-observed category/country values. An unseen category or country is accepted
-with an explicit caution: its one-hot block is all zeros, not an inferred match
-to another group. The smoke checks exercise default, modified, invalid, and
-unseen inputs without changing the fitted model.
-
-The tree identifies only **37.6% of actual failures** in 2026. Treat prediction
-as a limited launch-plan benchmark alongside customer-demand and delivery-cost
-evidence. The notebook cell is the interface; no website or service is needed.
-
-## Verification completed
-
-- Rebuilt from all ten original archives: **the CSV is byte-for-byte identical**
-  to the verified baseline (63,075 campaigns; no changed outcomes or features).
-- Executed **12 prep code cells and 13 analysis code cells**, with no saved errors.
-- Installed pinned dependencies in a new environment, ran the CSV-only analysis,
-  passed all **8 regression tests**, and checked dependency consistency.
-- Visually reviewed all **six exported figures**, including literal dollar-sign
-  labels, the shared 0–100% duration comparison, and timing-cutoff notes.
-- Verified default/modified predictions, invalid-input rejection, and explicit
-  warnings for unseen category/country values. Scoring reuses the fitted model.
-- Existing chart values and model results are unchanged. The newly quantified
-  duplicate and timestamp audits add limitations, not changes to the cohort.
-
-Recheck with the commands above. Notebook execution timestamps can change on a
-rerun; dataset, metrics, and figure contents should remain reproducible in the
-pinned environment.
-
-## Exported figures and report handoff
-
-All six PNGs are generated in the analysis notebook at 180 dpi, with readable
-labels and rates/sample sizes where appropriate:
-
-1. [01_success_by_category.png](visualizations/01_success_by_category.png)
-2. [02_success_by_country.png](visualizations/02_success_by_country.png)
-3. [03_success_by_funding_goal.png](visualizations/03_success_by_funding_goal.png)
-4. [04_success_by_duration.png](visualizations/04_success_by_duration.png)
-5. [05_duration_comparison_by_goal.png](visualizations/05_duration_comparison_by_goal.png)
-6. [06_success_by_launch_month_and_year.png](visualizations/06_success_by_launch_month_and_year.png)
-
-`data/analysis_summary.json` contains chart-source counts/rates;
-`data/model_evaluation.json` contains both splits' full metrics and confusion
-matrices; `data/cohort_audit.json` documents raw counts and outcome timestamps;
-`data/verification.json` records checks and artifact hashes. These files and
-the executed notebooks are the source for the final written report.
-
-The **written Word document and PDF are intentionally next**. `reports/`
-remains reserved for them. Carry the sampling, cutoff, small-subgroup,
-calendar-boundary, retrospective-feature, and missed-failure limitations into
-that report, and identify the exact Git commit used for its results.
+The original demo stays inside `02_analysis_and_prediction.ipynb`: it scores
+one editable row with an already-fitted Decision Tree, without retraining on
+each edit. Word/PDF report writing remains a later phase.

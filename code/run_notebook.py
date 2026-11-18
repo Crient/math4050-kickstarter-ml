@@ -9,9 +9,14 @@ from tempfile import TemporaryDirectory
 
 ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument('notebook', choices=['analysis', 'prep'])
+NOTEBOOKS = {
+    'analysis': '02_analysis_and_prediction.ipynb',
+    'prep': '01_data_prep.ipynb',
+    'comparison': '03_math4050_model_comparison.ipynb',
+}
+parser.add_argument('notebook', choices=list(NOTEBOOKS))
 args = parser.parse_args()
-path = ROOT/'code'/('02_analysis_and_prediction.ipynb' if args.notebook == 'analysis' else '01_data_prep.ipynb')
+path = ROOT/'code'/NOTEBOOKS[args.notebook]
 notebook = nbformat.read(path, as_version=4)
 # A temporary kernelspec ensures the notebook uses this exact venv, not a global
 # kernel with a similar display name. Nothing is installed in the user's home.
