@@ -31,10 +31,34 @@ DATA3125 submission, starter, and job-application-agent workspace alone.
   campaign. This deterministic choice does not resolve conflicting records.
 - Preserve the end-of-October-1-2026 UTC deadline/outcome eligibility cutoff
   (`2026-10-02 00:00 UTC`, exclusive) and all sampling/retrospective limitations.
-- Use exactly five predictors: USD funding goal, duration, launch month, main
-  category, country. Success is 1 and failure is 0. Never use outcome fields,
-  backers, final pledged amounts, IDs, timestamps, or launch year as predictors.
-  Launch year is for splitting only; outcome is the target only.
+- The user's professor advised roughly 9–10 meaningful predictors for MATH4050.
+  The five DATA3125 inputs are the reference baseline, not a limit on this
+  extension. Expand the feature set through the user's block-by-block learning
+  sessions before the additional classifier experiments.
+- Count distinct input features, not one-hot indicator columns or duplicate
+  transformed copies. The proposed ten are the original USD goal, duration,
+  launch month, main category and country, plus launch weekday, detailed
+  category, title word count, blurb word count, and project age at launch
+  (launched_at minus recorded created_at). These additions are candidates
+  pending source coverage, timestamp and missing-value checks.
+- Existing DATA3125 FEATURES/EXPORT_COLUMNS and the setup CSV checks describe
+  the inherited five-input baseline. Implement future MATH4050 features in
+  separate exports/helpers or new notebook cells as the user learns them.
+  Join additional source fields by the original deduplicated campaign ID and
+  preserve the 63,075-campaign cohort; handle missing data explicitly.
+  Read the existing raw archives as needed for this later feature work.
+- Audit the added features' provenance and possible edits after launch.
+  Title/blurb values come from later snapshots, so launch-time availability
+  remains unverified. Project age requires valid ordered creation/launch dates.
+  Encoding, imputation, scaling and learned text transforms belong inside
+  training pipelines. Keep launch year for splitting, success as the target,
+  and campaign IDs/timestamps for joining and deriving justified features.
+  Exclude final pledged amounts, backers, percent funded, final state, outcome
+  timestamps and post-launch badges/status fields without launch-time evidence.
+- The next learning sequence is the majority-class baseline, feature-source
+  audit and expanded feature preparation, comparable starting models, then
+  additional classifiers and complexity experiments. A most-frequent baseline
+  can run with the current CSV because its predictions ignore feature values.
 - Fit learned preprocessing (including scaling, encoding, imputation and PCA)
   on training data only, inside pipelines. Train candidates on 2024 and tune/
   select using 2025 validation. Freeze the design before refitting on 2024–2025

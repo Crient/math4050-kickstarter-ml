@@ -30,10 +30,48 @@ The committed CSV contains **63,075 unique campaigns**: **20,581** launched in
 The notebook checks the hash, schema, unique IDs, year counts, dates and feature
 validity using the inherited validation function. Setup does not rebuild data.
 
-Use exactly five predictors: `funding_goal_usd`, `duration_days`, `launch_month`,
-`main_category`, and `country`. Success is 1; failure is 0. ID, launch year,
-timestamps and outcomes are never predictors; backers and final pledges are
-excluded. Launch year determines the split; success is the target.
+The inherited CSV provides the five DATA3125 reference predictors:
+`funding_goal_usd`, `duration_days`, `launch_month`, `main_category`, and
+`country`. Success is 1 and failure is 0. The MATH4050 plan targets roughly
+**9–10 meaningful input features**, following the professor's guidance reported
+by the user. Encoded indicator columns and duplicate transformations do not
+add independent input features.
+
+### Feature-engineering learning plan
+
+The next learning work expands the five reference inputs. These are proposed
+additions whose source coverage and suitability still need to be checked:
+
+| Candidate addition | Source and intended meaning |
+| --- | --- |
+| Launch weekday | Derive from the UTC launch timestamp |
+| Detailed category | Extract the specific category from the original category JSON |
+| Title word count | Derive from the source `name` field |
+| Blurb word count | Derive from the source `blurb` field |
+| Project age at launch in days | Difference between recorded `launched_at` and `created_at`; audit missing and invalid dates |
+
+The saved raw preview confirms that `name`, `blurb`, `category`, `created_at`
+and `launched_at` exist in the inspected source part. Coverage across all
+eligible campaigns, usable nested category values and data quality remain
+unverified. Later snapshots may contain edited titles/blurbs; this feature
+expansion retains the retrospective availability limitation.
+
+Read the existing raw archives and use the same deduplication rule to recover
+the additional fields for the original campaign IDs. Prepare a separate
+MATH4050 feature export and retain the original cohort and baseline artifacts.
+The current setup notebook still validates the inherited five-input CSV.
+Add the expanded feature work together in subsequent learning sessions.
+
+Run the majority-class baseline first, then audit and prepare expanded features
+before training additional classifiers. Compare the original and expanded
+feature sets using the earlier years. Log-goal, cyclical-month and interaction
+experiments can then test representations without treating duplicate encodings
+as extra independent features.
+
+Use launch year for splitting and success as the target. Keep IDs/timestamps
+for joins and justified feature derivation. Exclude final pledges, backer counts,
+percent funded and other outcome-dependent fields. Staff-pick/spotlight or
+similar post-launch flags require evidence of availability at launch.
 
 Train on 2024 and tune/select using 2025 validation, keeping all learned
 preprocessing inside the training pipeline. This includes scaling, category
